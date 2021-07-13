@@ -1,0 +1,39 @@
+name: check-updates
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 1 * *' # check every month
+
+jobs:
+  build:
+    runs-on: ubuntu-latest 
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Check versions
+        id: latest-version
+        run: |
+          echo "LATEST=$(curl -s https://data.iana.org/time-zones/data/version)" >> $GITHUB_ENV
+          echo "CURRENT=$(cat dist/VERSION)" >> $GITHUB_ENV
+      - name: print out newest versions
+        run: |
+          echo "${{ env.LATEST }}"
+          echo "${{ env.CURRENT }}"
+      - name: check for any updates
+        if: ${{ env.CURRENT >= env.LATEST }}
+        run: exit 1
+      - name: Add new VERSION
+        run: |
+          wget https://data.iana.org/time-zones/data/version -O dist/VERSION
+          wget https://data.iana.org/time-zones/data/zone1970.tab -O build/zone1970.tab
+      - name: "Run Build"
+        run: npm run build
+      - name: setup git config
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+      - name: "Commit new files"
+        run : |
+          git add dist
+          git commit -m "new version"
+          git push origin main

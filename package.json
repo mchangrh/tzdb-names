@@ -1,0 +1,25 @@
+{
+  "name": "@mchangrh/tzdb-names",
+  "version": "2021.0.0-a",
+  "description": "Timezone database names.",
+  "main": "dist/zones.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "node build/parse.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/niles-bot/timezones.git"
+  },
+  "keywords": [
+    "iana",
+    "timezone",
+    "tz"
+  ],
+  "author": "Michael Chang <michael@mchang.name>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/niles-bot/timezones/issues"
+  },
+  "homepage": "https://github.com/niles-bot/timezones#readme"
+}
