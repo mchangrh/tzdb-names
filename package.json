@@ -1,8 +1,8 @@
 {
   "name": "@mchangrh/tzdb-names",
-  "version": "2021.0.1-a",
+  "version": "2021.1.0-a",
   "description": "Timezone database names.",
-  "main": "dist/zones.js",
+  "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "node build/parse.js"

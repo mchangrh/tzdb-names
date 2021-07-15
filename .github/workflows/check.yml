@@ -26,6 +26,7 @@ jobs:
         run: |
           wget https://data.iana.org/time-zones/data/version -O dist/VERSION
           wget https://data.iana.org/time-zones/data/zone1970.tab -O build/zone1970.tab
+          wget https://data.iana.org/time-zones/data/backward -O build/backward
       - name: "Run Build"
         run: npm run build
       - name: setup git config

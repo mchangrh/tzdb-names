@@ -1,1 +1,0 @@
-exports.zoneNames = require("./zone.json")
